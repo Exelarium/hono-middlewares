@@ -1,0 +1,38 @@
+{
+  "name": "@exelarium/hono-middlewares",
+  "description": "A collection of middlewares for Hono framework",
+  "version": "1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "exelarium",
+    "hono",
+    "middleware",
+    "authentication"
+  ],
+  "homepage": "https://exelarium.com",
+  "author": {
+    "name": "Exelarium",
+    "email": "contact@exelarium.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exelarium/hono-middlewares"
+  },
+  "bugs": {
+    "url": "https://github.com/exelarium/hono-middlewares/issues"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@hono/sentry": "^1.2.1",
+    "hono": "^4.7.10",
+    "jose": "^6.0.11"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
