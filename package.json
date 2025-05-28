@@ -1,7 +1,7 @@
 {
   "name": "@exelarium/hono-middlewares",
   "description": "A collection of middlewares for Hono framework",
-  "version": "1.0",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -34,5 +34,8 @@
   },
   "devDependencies": {
     "typescript": "^5.8.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
