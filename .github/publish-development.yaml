@@ -1,4 +1,4 @@
-name: Publish Package Privately
+name: Publish Development Package
 
 on:
   push:
@@ -23,6 +23,17 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Generate version tag from branch name
+        run: |
+          # Extract branch name, remove the "dev/" prefix
+          RAW_BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+          CLEAN_BRANCH_NAME="${RAW_BRANCH_NAME#dev/}"
+          BRANCH_SUFFIX="dev-${CLEAN_BRANCH_NAME}"
+          echo "Branch name for tag: $BRANCH_SUFFIX"
+          # Create a tag for the branch
+          git tag "$BRANCH_SUFFIX"
+          git push origin "$BRANCH_SUFFIX"
 
       - name: Publish to GitHub Packages
         run: |
