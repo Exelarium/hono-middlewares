@@ -6,6 +6,20 @@ on:
       - '[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
+  update_verison:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Package Version Change
+        uses: iamthenoah/gh-action-update-json@v3
+        with:
+          branch: main
+          file: package.json
+          key: version
+          value: ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   publish_to_npm:
     runs-on: ubuntu-latest
 
