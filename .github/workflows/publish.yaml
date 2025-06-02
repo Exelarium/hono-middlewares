@@ -9,7 +9,11 @@ jobs:
   update_verison:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
+      - uses: actions/checkout@v4
       - name: Package Version Change
         uses: iamthenoah/gh-action-update-json@v3
         with:
