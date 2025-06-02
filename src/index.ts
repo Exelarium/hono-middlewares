@@ -7,5 +7,6 @@ export interface HttpExceptionOptions {
 }
 
 export * from './with-authentication'
+export * from "./validation"
 export * from './hooks/use-http-exceptions'
 export * from './hooks/use-sentry'
