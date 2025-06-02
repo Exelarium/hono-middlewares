@@ -6,19 +6,20 @@ on:
       - '[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
-  build:
+  publish_to_npm:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
+          registry-url: https://npm.pkg.github.com/
           scope: '@exelarium'
       - name: Build package
         run: npm ci
+      - name: Use tag version
+        run: npm version ${{ github.ref_name }}
       - name: Publish to GitHub
         run: npm publish --registry https://npm.pkg.github.com --access public
         env:
@@ -27,3 +28,22 @@ jobs:
         run: npm publish --registry https://registry.npmjs.org --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish_to_github:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          registry-url: https://npm.pkg.github.com/
+          scope: '@exelarium'
+      - name: Build package
+        run: npm ci
+      - name: Use tag version
+        run: npm version ${{ github.ref_name }}
+      - name: Publish to GitHub
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_PASSWORD }}
