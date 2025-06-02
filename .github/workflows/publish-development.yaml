@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: read
       packages: write
@@ -17,10 +17,23 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "lts/*"
+          node-version: 'lts/*'
           registry-url: https://npm.pkg.github.com/
           scope: '@exelarium'
-      - run: npm ci
+      - name: Build package
+        run: npm ci
+      - name: Update version with branch name
+        run: |
+          # Extract the branch name and remove the "dev/" prefix
+          RAW_BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+          CLEAN_BRANCH_NAME="${RAW_BRANCH_NAME#dev/}"
+          BRANCH_SUFFIX="dev-${CLEAN_BRANCH_NAME}"
+          # Read base version from package.json
+          VERSION=$(node -p "require('./package.json').version")
+          DEV_VERSION="$VERSION-$BRANCH_SUFFIX"
+          echo "Setting version to $DEV_VERSION"
+          # Update the version in package.json
+          npm version --no-git-tag-version "$DEV_VERSION"
       - name: Publish to GitHub
         run: npm publish
         env:

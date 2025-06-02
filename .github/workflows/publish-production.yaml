@@ -15,14 +15,15 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "lts/*"
+          node-version: 'lts/*'
           scope: '@exelarium'
-      - run: npm ci
+      - name: Build package
+        run: npm ci
       - name: Publish to GitHub
         run: npm publish --registry https://npm.pkg.github.com --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish to NPM
-        run: npm publish --registry https://npm.pkg.github.com --access public
+        run: npm publish --registry https://registry.npmjs.org --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
