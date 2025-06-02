@@ -14,18 +14,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
-          registry-url: https://npm.pkg.github.com/
+          registry-url: https://registry.npmjs.org
           scope: '@exelarium'
       - name: Build package
         run: npm ci
       - name: Use tag version
         run: npm version ${{ github.ref_name }}
-      - name: Publish to GitHub
-        run: npm publish --registry https://npm.pkg.github.com --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_PASSWORD }}
       - name: Publish to NPM
-        run: npm publish --registry https://registry.npmjs.org --access public
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -44,6 +40,6 @@ jobs:
       - name: Use tag version
         run: npm version ${{ github.ref_name }}
       - name: Publish to GitHub
-        run: npm publish --access public
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_PASSWORD }}
