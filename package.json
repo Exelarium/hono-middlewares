@@ -30,11 +30,13 @@
   "license": "ISC",
   "dependencies": {
     "@hono/sentry": "^1.2.1",
-    "hono": "^4.7.10",
     "jose": "^6.0.11"
   },
   "devDependencies": {
     "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "hono": "^4.7.10"
   },
   "files": [
     "dist"
