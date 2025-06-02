@@ -22,7 +22,7 @@ jobs:
       - name: Publish to GitHub
         run: npm publish --registry https://npm.pkg.github.com --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_PASSWORD }}
       - name: Publish to NPM
         run: npm publish --registry https://registry.npmjs.org --access public
         env:
