@@ -19,7 +19,7 @@ jobs:
       - name: Build package
         run: npm ci
       - name: Use tag version
-        run: npm version ${{ github.ref_name }}
+        run: npm version ${{ github.ref_name }} --no-git-tag-version
       - name: Publish to NPM
         run: npm publish
         env:
@@ -38,7 +38,7 @@ jobs:
       - name: Build package
         run: npm ci
       - name: Use tag version
-        run: npm version ${{ github.ref_name }}
+        run: npm version ${{ github.ref_name }} --no-git-tag-version
       - name: Publish to GitHub
         run: npm publish
         env:
