@@ -1,7 +1,8 @@
 import { Hono } from 'hono'
 import { HTTPException } from 'hono/http-exception'
+import { HttpExceptionOptions } from 'src/types'
 
-export function useHttpExceptions(app: Hono<any>, { capture }: HttpExceptionConfig = {}) {
+export function useHttpExceptions(app: Hono<any>, { capture }: HttpExceptionOptions = {}) {
   app.onError((err, ctx) => {
     if (err instanceof HTTPException) {
       return err.getResponse()
