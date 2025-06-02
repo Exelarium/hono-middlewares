@@ -1,0 +1,29 @@
+name: Publish Package to GitHub and NPM
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          scope: '@exelarium'
+      - name: Build package
+        run: npm ci
+      - name: Publish to GitHub
+        run: npm publish --registry https://npm.pkg.github.com --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to NPM
+        run: npm publish --registry https://registry.npmjs.org --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
