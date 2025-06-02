@@ -1,7 +1,7 @@
 import { Context, Env, Next } from 'hono'
 import { createRemoteJWKSet, jwtVerify } from 'jose'
 
-export default function withAuthentication(options?: OAuthOptions) {
+export function withAuthentication(options?: OAuthOptions) {
   return async function (context: Context<Env>, next: Next) {
     const audience = options?.audience || context.env.OAUTH_AUDIENCE
     const authority = options?.authority || context.env.OAUTH_AUTHORITY
