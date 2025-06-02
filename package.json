@@ -7,7 +7,8 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepublish": "npm run build"
   },
   "keywords": [
     "exelarium",
@@ -28,15 +29,13 @@
     "url": "https://github.com/exelarium/hono-middlewares/issues"
   },
   "license": "ISC",
-  "dependencies": {
+  "peerDependencies": {
+    "hono": "^4.7.10",
     "@hono/sentry": "^1.2.1",
     "jose": "^6.0.11"
   },
   "devDependencies": {
     "typescript": "^5.8.3"
-  },
-  "peerDependencies": {
-    "hono": "^4.7.10"
   },
   "files": [
     "dist"
