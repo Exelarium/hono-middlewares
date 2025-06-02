@@ -21,7 +21,7 @@ jobs:
       - name: Use tag version
         run: npm version ${{ github.ref_name }} --no-git-tag-version
       - name: Publish to NPM
-        run: npm publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
