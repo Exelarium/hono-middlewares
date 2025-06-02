@@ -1,6 +1,6 @@
 import { Context, Env, Next } from 'hono'
 import { createRemoteJWKSet, jwtVerify } from 'jose'
-import { OAuthOptions } from 'src/types'
+import { OAuthOptions } from '.'
 
 export function withAuthentication(options?: OAuthOptions) {
   return async function (context: Context<Env>, next: Next) {

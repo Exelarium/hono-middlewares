@@ -1,3 +1,16 @@
-export { withAuthentication } from 'src/with-authentication'
-export { useSentry } from 'src/hooks/use-sentry'
-export { useHttpExceptions } from 'src/hooks/use-http-exceptions'
+import { Context } from 'hono'
+
+export interface OAuthOptions {
+  audience?: string
+  authority?: string
+}
+
+export interface HttpExceptionOptions {
+  capture?: (err: any, ctx: Context) => Promise<void>
+  customMessage?: (err: any) => string
+  defaultStatusCode?: number
+}
+
+export * from './with-authentication'
+export * from './hooks/use-http-exceptions'
+export * from './hooks/use-sentry'
