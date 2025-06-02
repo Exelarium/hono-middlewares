@@ -2,7 +2,7 @@
   "type": "module",
   "name": "@exelarium/hono-middlewares",
   "description": "A collection of middlewares for Hono framework",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
