@@ -55,9 +55,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Package Version Change
-        uses: iamthenoah/gh-action-update-json@v3
+        uses: iamthenoah/gh-action-update-json@v4
         with:
-          branch: main
           file: package.json
           key: version
           value: ${{ github.ref_name }}
