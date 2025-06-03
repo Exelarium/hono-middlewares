@@ -32,16 +32,11 @@
   "peerDependencies": {
     "@hono/sentry": "^1.2.1",
     "hono": "^4.7.10",
-    "jose": ">=5.0.0 <7.0.0"
+    "jose": ">=5.0.0 <7.0.0",
+    "@hono/zod-validator": "^0.7.0",
+    "zod": "^3.25.48"
   },
   "devDependencies": {
     "typescript": "^5.8.3"
-  },
-  "files": [
-    "dist"
-  ],
-  "dependencies": {
-    "@hono/zod-validator": "^0.7.0",
-    "zod": "^3.25.48"
   }
 }
