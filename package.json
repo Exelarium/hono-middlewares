@@ -1,7 +1,7 @@
 {
   "type": "module",
-  "name": "@exelarium/hono-middlewares",
-  "description": "A collection of middlewares for Hono framework",
+  "name": "@exelarium/hono-toolkit",
+  "description": "A collection of middlewares and helpers for Hono framework",
   "version": "1.1.5",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -14,6 +14,8 @@
     "exelarium",
     "hono",
     "middleware",
+    "caching",
+    "database",
     "authentication"
   ],
   "homepage": "https://exelarium.com",
@@ -23,10 +25,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/exelarium/hono-middlewares"
+    "url": "https://github.com/exelarium/hono-toolkit"
   },
   "bugs": {
-    "url": "https://github.com/exelarium/hono-middlewares/issues"
+    "url": "https://github.com/exelarium/hono-toolkit/issues"
   },
   "license": "ISC",
   "peerDependencies": {
