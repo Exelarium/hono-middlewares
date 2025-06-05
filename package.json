@@ -33,12 +33,13 @@
   "license": "ISC",
   "peerDependencies": {
     "@hono/sentry": "^1.2.1",
+    "@hono/zod-validator": "^0.7.0",
     "hono": "^4.7.10",
     "jose": ">=5.0.0 <7.0.0",
-    "@hono/zod-validator": "^0.7.0",
     "zod": "^3.25.48"
   },
   "devDependencies": {
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "@cloudflare/workers-types": "^4.20250605.0"
   }
 }
